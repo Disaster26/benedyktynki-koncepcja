@@ -13,7 +13,7 @@ if('IntersectionObserver' in window){
  ['godziny','intencje','wspolnota','oplatkarnia','kontakt'].forEach(function(id){var el=document.getElementById(id);if(el)io.observe(el)});
  // pasek mobilny po przewinięciu za pierwszy ekran
  var mob=$('#mob'),hero=$('#hero');
- new IntersectionObserver(function(en){mob.classList.toggle('widac',!en[0].isIntersecting)},{threshold:0}).observe(hero);
+ new IntersectionObserver(function(en){var poza=!en[0].isIntersecting;mob.classList.toggle('widac',poza);if(poza&&document.documentElement.classList.contains('ck'))$('#cookies').hidden=false},{threshold:0}).observe(hero);
 }
 // dziś
 var d=new Date(),dz=d.getDay(),nazwy=['niedziela','poniedziałek','wtorek','środa','czwartek','piątek','sobota'];
